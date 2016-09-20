@@ -160,7 +160,7 @@ will enter values nicely:
 ```
 Enter your guess (row,col):     2   ,     3
 ```
-You program should be able to deal with this.
+Your program should be able to deal with this.
 
 Once you have the coordinates, you should then recognize whether a
 ship is in that position. If it is, add a star (`layout.marker.hit`)
@@ -211,11 +211,11 @@ Final score: 0.5
 
 Before now, the board was being printed inclusive of enemy
 ships. Whether to print the enemy ships should actually be dependent
-on whether the game is in "debug" mode. That is, depending on the
-Boolean value of `layout.competition`. If `layout.competition` is true
-then enemy ships should be printed; if it is not, then enemy ships
-should be replaced with spaces (`layout.marker.water`), as though they
-were empty cells.
+on whether the game is in "competition" mode. That is, depending on
+the Boolean value of `layout.competition`. If `layout.competition` is
+true then enemy ships should be printed; if it is not, then enemy
+ships should be replaced with spaces (`layout.marker.water`), as
+though they were empty cells.
 
 By default, `layout.competition` is false. However, to put your
 program into competition printing mode, you should reset the value to
@@ -224,7 +224,7 @@ true:
 import layout
 layout.competition = True
 ```
-This should be done in your battleship code. Do not alter `layout`.
+This can/should be done in your battleship code.
 
 It is important to keep in mind that this is a printing detail, not an
 augmentation to the board itself. That is, the contents of the board
@@ -329,6 +329,31 @@ of code is implementing. If you use a concept that has not been
 covered in class, something you found online perhaps, you should add a
 comment explaining what is going on. Without an explanation, we can
 only assume you have cheated.
+
+## Suggestions
+
+For testing purposes, it is okay if you alter the layout file a
+bit. Changes you might want to consider:
+
+* Altering the values of `layout.rows` or `layout.columns` to ensure you
+board is created and printed correctly;
+
+* Changing the number of ships in `layout.ships`, and/or their
+positions. This will allow you to debug your vertical and horizontal
+placement. By having a single ship, you can also test whether your
+game over logistics are working.
+
+* Making `current` return a known list value. In particular, changing
+   ```python
+   current = lambda: [ random.randint(-1, 1) for _ in range(2) ]
+   ```
+   to
+   ```python
+   current = lambda: [ 1, 1 ]
+   ```
+   will force the `current` function to return the same list with every
+   call. Getting a consistent value will help you understand whether you
+   are doing things correctly.
 
 ## Submission
 
